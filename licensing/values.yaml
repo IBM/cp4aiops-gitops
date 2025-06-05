@@ -1,0 +1,8 @@
+catalog:
+  name: ibm-licensing-catalog
+  namespace: openshift-marketplace
+  image: icr.io/cpopen/ibm-licensing-catalog
+subscription:
+  name: ibm-licensing
+  namespace: ibm-licensing
+  channel: v4.2

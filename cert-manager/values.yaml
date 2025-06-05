@@ -1,0 +1,8 @@
+catalog:
+  name: ibm-cert-manager-catalog
+  namespace: openshift-marketplace
+  image: icr.io/cpopen/ibm-cert-manager-operator-catalog
+subscription:
+  name: ibm-cert-mgr
+  namespace: ibm-cert-manager
+  channel: v4.2

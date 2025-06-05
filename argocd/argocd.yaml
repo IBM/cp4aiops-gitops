@@ -1,0 +1,52 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ArgoCD
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
+  finalizers:
+    - argoproj.io/finalizer
+  name: openshift-gitops
+  namespace: openshift-gitops
+  labels:
+    app.kubernetes.io/instance: argocd
+    argocd.argoproj.io/instance: argocd
+spec:
+  applicationInstanceLabelKey: "argocd.argoproj.io/instance"
+  resourceHealthChecks:
+  - group: operators.coreos.com
+    kind: CatalogSource
+    check: |
+      hs = {}
+      hs.status = "Progressing"
+      hs.message = ""
+      if obj.status ~= nil then
+        if obj.status.connectionState ~= nil then
+          local state = obj.status.connectionState.lastObservedState
+          if state == "IDLE" or state == "CONNECTING" then
+            hs.status = "Progressing"
+            hs.message = "Waiting for CatalogSource to be ready..."
+            return hs
+          end
+          if state == "READY" then
+            hs.status = "Healthy"
+            hs.message = state
+            return hs
+          end
+        end
+      end
+      hs.status = "Progressing"
+      hs.message = "Provisioning CatalogSource instance..."
+      return hs
+  - group: orchestrator.aiops.ibm.com
+    kind: Installation
+    check: |
+      hs = {}
+      hs.status = "Progressing"
+      hs.message = ""
+      if obj.status ~= nil then
+        if obj.status.phase == "Running" then
+          hs.status = "Healthy"
+          hs.message = obj.status.phase
+        end
+      end
+      return hs
