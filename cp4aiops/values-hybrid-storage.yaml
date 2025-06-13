@@ -1,5 +1,8 @@
 namespace: cp4aiops
 
+gitops:
+  namespaceScoped: false
+
 catalog:
   name: ibm-aiops-catalog
   image: icr.io/cpopen/ibm-aiops-catalog@sha256:05666f63871a0c6d956f6abe752ad1e1add4aced0ed9dde84f603574a9535f52

@@ -1,0 +1,3 @@
+gitops:
+  instance: openshift-gitops
+  namespace: openshift-gitops
