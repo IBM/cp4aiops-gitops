@@ -1,0 +1,14 @@
+apiVersion: operators.coreos.com/v1alpha1
+kind: CatalogSource
+metadata:
+  name: {{.Values.catalog.name}}
+  namespace: {{.Values.namespace}}
+  annotations:
+    argocd.argoproj.io/sync-wave: "30"
+spec:
+  displayName: ibm-aiops-catalog
+  publisher: IBM
+  sourceType: grpc
+  image: {{.Values.catalog.image}}
+  grpcPodConfig:
+    securityContextConfig: restricted

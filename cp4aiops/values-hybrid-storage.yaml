@@ -1,0 +1,45 @@
+namespace: cp4aiops
+
+gitops:
+  namespaceScoped: false
+
+catalog:
+  name: ibm-aiops-catalog
+  image: icr.io/cpopen/ibm-aiops-catalog@sha256:693da63811b70e6f87643d27f67bdbf256668f331a7e4400d90653ca3c7d08b3
+
+subscription:
+  name: ibm-aiops-orchestrator
+  channel: v4.11
+
+installation:
+  name: ibm-cp-aiops
+  namespace: cp4aiops
+  spec:
+    size: large
+    storageClass: ocs-storagecluster-cephfs
+    storageClassLargeBlock: ocs-storagecluster-ceph-rbd
+    storage:
+      aiops-ir-core-postgres:
+        storageClass: lvms-vg-ir-core-postgres-1
+      aiops-ir-core-postgres-wal:
+        storageClass: lvms-vg-ir-core-postgres-1
+      aiops-topology-postgres:
+        storageClass: lvms-vg-topology-postgres-1
+      aiops-topology-postgres-wal:
+        storageClass: lvms-vg-topology-postgres-1
+      data-iaf-system-kafka:
+        storageClass: lvms-vg-kafka-1
+    topologyModel: application
+    license:
+      accept: ''
+    pakModules:
+    - name: aiopsFoundation
+      enabled: true
+    - name: applicationManager
+      enabled: true
+    - name: aiManager
+      enabled: true
+    - name: connection
+      enabled: false
+    - name: logAnomalyDetection
+      enabled: false

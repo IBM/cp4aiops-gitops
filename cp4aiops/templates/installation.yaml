@@ -1,0 +1,10 @@
+apiVersion: orchestrator.aiops.ibm.com/v1alpha1
+kind: Installation
+metadata:
+  name: {{.Values.installation.name}}
+  namespace: {{.Values.namespace}}
+  annotations:
+    argocd.argoproj.io/sync-wave: "100"
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+spec:
+  {{ .Values.installation.spec | toYaml | indent 2| trim }}

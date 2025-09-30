@@ -1,0 +1,33 @@
+namespace: cp4aiops
+
+gitops:
+  namespaceScoped: false
+
+catalog:
+  name: ibm-aiops-catalog
+  image: icr.io/cpopen/ibm-aiops-catalog@sha256:693da63811b70e6f87643d27f67bdbf256668f331a7e4400d90653ca3c7d08b3
+
+subscription:
+  name: ibm-aiops-orchestrator
+  channel: v4.11
+
+installation:
+  name: ibm-cp-aiops
+  spec:
+    size: large
+    storageClass: ocs-storagecluster-cephfs
+    storageClassLargeBlock: ocs-storagecluster-ceph-rbd
+    topologyModel: application
+    license:
+      accept: ''
+    pakModules:
+    - name: aiopsFoundation
+      enabled: true
+    - name: applicationManager
+      enabled: true
+    - name: aiManager
+      enabled: true
+    - name: connection
+      enabled: false
+    - name: logAnomalyDetection
+      enabled: false
