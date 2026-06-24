@@ -5,11 +5,11 @@ gitops:
 
 catalog:
   name: ibm-aiops-catalog
-  image: icr.io/cpopen/ibm-aiops-catalog@sha256:498bf235db6321fe46b3b98528f50dcbc64f7d5a991f2d9ed072993740b166e7
+  image: icr.io/cpopen/ibm-aiops-catalog@sha256:61e2b08e3731ecd2bf9b8349ca1d836e288f11847f0ec43b1711b1558d8218ce
 
 subscription:
   name: ibm-aiops-orchestrator
-  channel: v4.13
+  channel: v5.1
 
 installation:
   name: ibm-cp-aiops

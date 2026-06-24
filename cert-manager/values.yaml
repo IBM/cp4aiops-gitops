@@ -1,7 +1,7 @@
 catalog:
   name: ibm-cert-manager-catalog
   namespace: openshift-marketplace
-  image: icr.io/cpopen/ibm-cert-manager-operator-catalog@sha256:f3280ce1a45a6f7139b79bba402d137f1ac661699baf21e566f03d17d7807b59
+  image: icr.io/cpopen/ibm-cert-manager-operator-catalog@sha256:cdfefe057e75b30c50b1cf9f8c2a71a07b498d09bb5b74c454d3a0a7c11aa989
 subscription:
   name: ibm-cert-mgr
   namespace: ibm-cert-manager
