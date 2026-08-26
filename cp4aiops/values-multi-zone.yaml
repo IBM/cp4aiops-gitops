@@ -5,7 +5,7 @@ gitops:
 
 catalog:
   name: ibm-aiops-catalog
-  image: icr.io/cpopen/ibm-aiops-catalog@sha256:29bb9e7da9bed58948dcae74a22ce542748acba6f18b64c27875c1db3ac7db53
+  image: icr.io/cpopen/ibm-aiops-catalog@sha256:b62d055109cbb0231ad11422f8eff0b4f02e4bcaa8c9a3a3bfc5bff8318f7343
 
 subscription:
   name: ibm-aiops-orchestrator
