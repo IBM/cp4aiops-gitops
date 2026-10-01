@@ -22,3 +22,9 @@ spec:
   name: {{.Values.subscription.name}}
   source: {{.Values.catalog.name}}
   sourceNamespace: {{.Values.namespace}}
+  {{- if .Values.dropHistoricalAlerts}}
+  config:
+    env:
+    - name: DROP_HISTORIC_ALERTS
+      value: "true"
+  {{- end }}
